@@ -22,7 +22,7 @@ df.fillna(method='ffill', inplace=True)
 """Combining the different attributes of the dataset into a single string"""
 
 df['content'] = df['name'].astype(str) + ' ' + df['desc'].astype(
-    str) + ' ' + df['tags'] + ' ' + df['upforgrabs__link'].astype(str)
+    str) + ' ' + df['tags'] + ' ' + df['site'].astype(str)
 df['content'] = df['content'].fillna('')
 df['content']
 
@@ -113,7 +113,7 @@ def get_similar_repos():
             name = df.loc[i, 'name']
             if name not in printed_names: # Check if name has already been printed
                 tags = df.loc[i, 'tags']
-                link = df.loc[i, 'upforgrabs__link']
+                link = df.loc[i, 'site']
                 desc = df.loc[i, 'desc']
                 printed_names.append(name)
                 res.append({'name': name, 'tags': tags, 'link': link, 'desc': desc}) # Add name to printed names list
